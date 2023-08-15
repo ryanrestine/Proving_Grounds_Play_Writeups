@@ -52,7 +52,7 @@ Nmap done: 1 IP address (1 host up) scanned in 8.82 seconds
 
 Navigating to the webpage on port 80 we find a basic image:
 
-site.png
+![site.png](../assets/sosimple_assets/site.png)
 
 And checking out the source code we find a comment:
 
