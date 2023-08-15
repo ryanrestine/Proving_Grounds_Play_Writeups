@@ -56,17 +56,17 @@ Navigating to the webpage on port 80 we find a basic image:
 
 And checking out the source code we find a comment:
 
-note.png
+![note.png](../assets/sosimple_assets/note.png)
 
 Using Feroxbuster we find there is a page running WordPress:
 
-ferox.png
+![ferox.png](../assets/sosimple_assets/ferox.png)
 
 Heading to that page we find a pretty generic WordPress site:
 
-wp.png
+![wp.png](../assets/sosimple_assets/wp.png)
 
-Lets use wpscan to enumerate a but more:
+Lets use wpscan to enumerate a bit more:
 
 ```text
 ┌──(ryan㉿kali)-[~/PG/SoSimple]
@@ -90,7 +90,7 @@ _______________________________________________________________
 
 Cool looks like we've found two usernames:
 
-users.png
+![users.png](../assets/sosimple_assets/users.png)
 
 We can also bruteforce max's password using wpscan:
 
@@ -106,7 +106,7 @@ We can also bruteforce max's password using wpscan:
 
 Logging into the site and checking out the page source we can see that there is a plugin called social warfare.
 
-source.png
+![source.png](../assets/sosimple_assets/source.png)
 
 Searching for exploits I find: https://www.exploit-db.com/exploits/46794
 
@@ -116,7 +116,7 @@ Looking at the exploit it seems the path we can exploit is:
 wp-admin/admin-post.php?swp_debug=load_options&swp_url=%s
 ```
 
-path.png
+![path.png](../assets/sosimple_assets/path.png)
 
 And it also seems we can use this to grab a reverse shell ending in .txt
 
@@ -175,7 +175,7 @@ Once on the target I find a copy of Max's SSH key, so I'll grab that and SSH in 
 
 We can now grag the local.txt flag:
 
-local_flag.png
+![local_flag.png](../assets/sosimple_assets/local_flag.png)
 
 ### Privilege Escalation
 
@@ -183,7 +183,7 @@ Running `sudo -l` to see what can be run with elevated permissions, we find we c
 
 We can head over to https://gtfobins.github.io/gtfobins/service/ and see what the syntax is to exploit this:
 
-gtfo.png
+![gtfo.png](../assets/sosimple_assets/gtfo.png)
 
 Lets run:
 
@@ -226,11 +226,11 @@ First, lets get a better prompt with `python3 -c 'import pty;pty.spawn("/bin/bas
 
 Then we can run the following:
 
-tools.png
+![tools.png](../assets/sosimple_assets/tools.png)
 
 Nice! We're root! Lets grab the final flag:
 
-root_flag.png
+![root_flag.png](../assets/sosimple_assets/root_flag.png)
 
 Thanks for following along!
 
