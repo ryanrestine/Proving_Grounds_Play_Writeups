@@ -131,7 +131,7 @@ From here I can from the local.txt flag in `/var/www`:
 
 ![user_flag.png](../assets/katana_assets/user_flag.png)
 
-### Priviledge Escalation
+### Privilege Escalation
 
 Lets upload a copy of LinPEAS to the target to help enumerate a privilege escalation vector:
 
