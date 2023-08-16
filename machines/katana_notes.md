@@ -78,27 +78,27 @@ Nmap done: 1 IP address (1 host up) scanned in 24.57 seconds
 
 Heading over to the site we find just a basic image, with no functionality:
 
-site.png
+![site.png](../assets/katana_assets/site.png)
 
 Lets use Feroxbuster to see if we can discover any interesting directories against the HTTP ports:
 
-ferox.png
+![ferox.png](../assets/katana_assets/ferox.png)
 
 Cool, the `/upload.html` directory seems interesting
 
-upload.png
+![upload.png](../assets/katana_assets/upload.png)
 
 Lets upload a copy of the wwwolf-php-webshell and see what we can do with it.
 
 Once uploaded we see this message:
 
-moved.png
+![moved.png](../assets/katana_assets/moved.png)
 
 Ok interesting, looks like the file was uploaded, but I'm seeing a message that it's been moved to another server.
 
-After some trial and error I found our script at http://192.168.171.83:8715/katana_webshell.php Where I could confirm that we had execution on the target:
+After some trial and error I found our script at http://192.168.171.83:8715/katana_webshell.php where I could confirm that we had execution on the target:
 
-host.png
+![host.png](../assets/katana_assets/host.png)
 
 Lets grab a reverse shell one-liner from https://www.revshells.com/ and get a proper shell to work in:
 
@@ -129,13 +129,13 @@ www-data@katana:/opt/manager/html$
 
 From here I can from the local.txt flag in `/var/www`:
 
-user_flag.png
+![user_flag.png](../assets/katana_assets/user_flag.png)
 
 ### Priviledge Escalation
 
 Lets upload a copy of LinPEAS to the target to help enumerate a privilege escalation vector:
 
-transfer.png
+![transfer.png](../assets/katana_assets/transfer.png)
 
 Cool, LinPEAS finds that Python has capabilities set. This should make for an easy privesc:
 
@@ -160,7 +160,7 @@ uid=0(root) gid=33(www-data) groups=33(www-data)
 
 We can now grab the proof.txt flag:
 
-root_flag.png
+![root_flag.png](../assets/katana_assets/root_flag.png)
 
 Thanks for following along!
 
