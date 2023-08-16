@@ -139,6 +139,8 @@ Lets upload a copy of LinPEAS to the target to help enumerate a privilege escala
 
 Cool, LinPEAS finds that Python has capabilities set. This should make for an easy privesc:
 
+![cap.png](../assets/katana_assets/cap.png)
+
 Lets run:
 
 ```text
