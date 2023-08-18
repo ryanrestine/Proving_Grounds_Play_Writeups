@@ -103,6 +103,8 @@ From here I can grab the local.txt flag in dylan's `/home` directory:
 
 Lets go ahead and transfer over a copy of LinPEAS to help enumerate:
 
+![transfer.png](../assets/shakabrah_assets/transfer.png)
+
 Interesting, LinPEAS finds asomething with the SUID bit set called vim.basic. I'm wondering if this is just vim?
 
 We can head over to https://gtfobins.github.io/gtfobins/vim/ and find a couple of commands to try:
