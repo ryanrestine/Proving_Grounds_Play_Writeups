@@ -52,15 +52,15 @@ Nmap done: 1 IP address (1 host up) scanned in 11.92 seconds
 
 Navigating to the site we find a "Connection Tester" that will ping supplied IP adresses. 
 
-site.png
+![site.png](../assets/shakabrah_assets/site.png)
 
 And we can confirm we can ping localhost:
 
-local.png
+![local.png](../assets/shakabrah_assets/local.png)
 
-Playing around with this field a bit, I disvocered we can execute commands after add a `;` character:
+Playing around with this field a bit, I disvocered we can chain commands after adding a `;` character:
 
-code.png
+![code.png](../assets/shakabrah_assets/code.png)
 
 Lets try to exploit this to get a reverse shell:
 
@@ -97,7 +97,7 @@ www-data@shakabrah:/var/www/html$
 
 From here I can grab the local.txt flag in dylan's `/home` directory:
 
-user_flag.png
+![user_flag.png](../assets/shakabrah_assets/user_flag.png)
 
 ### Privilege Escalation
 
@@ -107,7 +107,7 @@ Interesting, LinPEAS finds asomething with the SUID bit set called vim.basic. I'
 
 We can head over to https://gtfobins.github.io/gtfobins/vim/ and find a couple of commands to try:
 
-suid.png
+![suid.png](../assets/shakabrah_assets/suid.png)
 
 We'll need to make sure we use `vim.basic` and `:py3` to account for Python3 being in use on the box.
 
@@ -119,7 +119,7 @@ Lets run:
 
 Which will give us a root shell and we can grab the final flag:
 
-root_flag.png
+![root_flag.png](../assets/shakabrah_assets/root_flag.png)
 
 Thanks for following along!
 
