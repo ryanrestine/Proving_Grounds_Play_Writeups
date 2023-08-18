@@ -58,7 +58,7 @@ And we can confirm we can ping localhost:
 
 ![local.png](../assets/shakabrah_assets/local.png)
 
-Playing around with this field a bit, I disvocered we can chain commands after adding a `;` character:
+Playing around with this field a bit, I discovered we can chain commands after adding a `;` character:
 
 ![code.png](../assets/shakabrah_assets/code.png)
 
