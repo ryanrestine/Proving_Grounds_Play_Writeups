@@ -52,45 +52,47 @@ Nmap done: 1 IP address (1 host up) scanned in 8.89 seconds
 
 Heading over to the site on port 80 we find a basic login screen.
 
-site.png
+![site.png](../assets/dc-4_assets/site.png)
 
 Taking a look at the page source we can see the form is making a POST request on `/login.php`
 
+![login.png](../assets/dc-4_assets/login.png)
+
 Lets use Hydra to try and bruteforce the admin user's password:
 
-brute.png
+![brute.png](../assets/dc-4_assets/brute.png)
 
 Nice, Hydra found a password!
 
 Logging into the site we see we can follow a link to `/command.php`,  which in turn lets us select a few different commands we can run against the system:
 
-command.png
+![command.png](../assets/dc-4_assets/command.png)
 
-list.png
+![list.png](../assets/dc-4_assets/list.png)
 
 Lets catch this in Burp and see what else we can find:
 
 Interesting, we can see that commands are being executing in the `radio` field (I think these are called radio buttons in HTML)
 
-burp.png
+![burp.png](../assets/dc-4_assets/burp.png)
 
 We can confirm we have code execution here by inputing the command `pwd` into the field (which wasn't an option in the GUI) and getting a valid response:
 
-pwd.png
+![pwd.png](../assets/dc-4_assets/pwd.png)
 
 ### Exploitation
 
-We can exploit this but issuing a reverse shell command here:
+We can exploit this by issuing a reverse shell command here:
 
-burp2.png
+![burp2.png](../assets/dc-4_assets/burp2.png)
 
 Which gets us a shell back in our NetCat listener:
 
-shell.png
+![shell.png](../assets/dc-4_assets/shell.png)
 
 We can then grab the local.txt flag in Jim's directory:
 
-user_flag.png
+![user_flag.png](../assets/dc-4_assets/user_flag.png)
 
 ### Privilege Escalation
 
@@ -117,7 +119,7 @@ dragon
 
 Lets copy the list back to our attacking machine and try to bruteforce the passwords for SSH as user Jim:
 
-brute2.png
+![brute2.png](../assets/dc-4_assets/brute2.png)
 
 Cool, that worked:
 
@@ -220,7 +222,7 @@ Nice, that worked!
 
 All we need to do now is grab the proof.txt flag:
 
-root_flag.png
+![root_flag.png](../assets/dc-4_assets/root_flag.png)
 
 Thanks for following along!
 
