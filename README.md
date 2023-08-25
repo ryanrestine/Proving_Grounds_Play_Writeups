@@ -2,6 +2,7 @@
 
 A place for PG Play CTF writeups
 
+- DC-04
 - Katana
 - Shakabrah
 - SoSimple
