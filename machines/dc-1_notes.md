@@ -1,6 +1,6 @@
 # PG Play - DC-1
 
-#### Ip: 192.168.176.195
+#### Ip: 192.168.244.193
 #### Name: DC-1
 #### Difficulty: Easy
 #### Community Rating: Easy
@@ -72,13 +72,15 @@ Nmap done: 1 IP address (1 host up) scanned in 16.51 seconds
 
 Heading to the site we find we are working with Drupal here.
 
-site.png
+![site.png](../assets/dc-1_assets/site.png)
 
 Nmap also found a `/robots.txt` page for us with several entries:
 
-robots.png
+![robots.png](../assets/dc-1_assets/robots.png)
 
 Kicking off a Nikto scan against the target we see it is running Drupal 7. This version is associated with several vulnerabilities. 
+
+![nikto.png](../assets/dc-1_assets/nikto.png)
 
 Using https://www.exploit-db.com/exploits/44449 we can get easy code execution on the target.
 
@@ -132,33 +134,33 @@ www-data
 
 Lets use this pseudo-shell to spawn a proper reverse shell:
 
-shell.png
+![shell.png](../assets/dc-1_assets/shell.png)
 
 Cool, now that we have a working shell, lets grab the local.txt flag:
 
-user_flag.png
+![user_flag.png](../assets/dc-1_assets/user_flag.png)
 
 ### Privilege Escalation
 
 Lets transfer over LinPEAS to help with enumeration:
 
-transfer.png
+![transfer.png](../assets/dc-1_assets/transfer.png)
 
 Interesting, LinPEAS finds that `find` has the SUID bit set. 
 
-find.png
+![find.png](../assets/dc-1_assets/find.png)
 
 This should make for an easy privesc. Heading over to https://gtfobins.github.io/gtfobins/find/ we find the command we need:
 
-gtfo.png
+![gtfo.png](../assets/dc-1_assets/gtfo.png)
 
 Lets run that:
 
-root.png
+![root.png](../assets/dc-1_assets/root.png)
 
 Nice, that worked! We can now grab the final flag:
 
-root_flag.png
+![root_flag.png](../assets/dc-1_assets/root_flag.png)
 
 Thanks for following along!
 
