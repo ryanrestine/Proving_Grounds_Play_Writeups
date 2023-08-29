@@ -55,7 +55,7 @@ Ok, looks like just HTTP and SSH (running on an uncommon port) are open. Also, w
 
 Looking at the site we see its running WordPress:
 
-site.png
+![site.png](../assets/dc-2_assets/site.png)
 
 Lets use WPScan to see what else we can find:
 
@@ -80,7 +80,7 @@ _______________________________________________________________
 
 Cool, WPScan found three usernames:
 
-users.png
+![users.png](../assets/dc-2_assets/users.png)
 
 Lets add them to a list called users.txt
 
@@ -92,19 +92,19 @@ tom
 jerry
 ```
 
-Based on an hint on the webpage, I'll use cewl to generate a custom wordlist:
+Based on a hint on the webpage, I'll use cewl to generate a custom wordlist:
 
 ### Exploitation
 
 We can do that by running:
 
-cewl.png
+![cewl.png](../assets/dc-2_assets/cewl.png)
 
 Now that we have a potential password list we can try to bruteforce the WordPress site using wpscan:
 
-creds.png
+![creds.png](../assets/dc-2_assets/creds.png)
 
-Nice, we've got a couple credentials. Before logging into the WP site, lets see if these passswords are being reused for SSH to.
+Nice, we've got a couple credentials. Before logging into the WP site, lets see if these passswords are being reused for SSH too.
 
 ```text
 ┌──(ryan㉿kali)-[~/PG/DC-2]
@@ -143,7 +143,7 @@ uid=1001(tom) gid=1001(tom) groups=1001(tom)
 
 We can now grab the local.txt:
 
-user_flag.png
+![user_flag.png](../assets/dc-2_assets/user_flag.png)
 
 ### Privilege Escalation
 
@@ -173,7 +173,7 @@ Interesting, looks like jerry can run git as root.
 
 We can head over to https://gtfobins.github.io/gtfobins/git/ and find the commands we need:
 
-gtfo.png
+![gtfo.png](../assets/dc-2_assets/gtfo.png)
 
 Nice, that worked:
 
@@ -218,7 +218,7 @@ uid=0(root) gid=0(root) groups=0(root)
 
 We can now grab the proof.txt flag:
 
-root_flag.png
+![root_flag.png](../assets/dc-2_assets/root_flag.png)
 
 Thanks for following along!
 
