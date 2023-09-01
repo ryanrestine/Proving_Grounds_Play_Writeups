@@ -36,13 +36,13 @@ Heading to the site we find a simple page:
 
 And navigating to the `/textpattern/textpattern` found in robots.txt in the Nmap results, we find a login page:
 
-text.png
+![text.png](../assets/driftingblues6_assets/text.png)
 
 Lets kick off some directory fuxxing against the site ( note: I'm using the `--filter-status 404` flag because I was getting a ton of 404s returning:
 
-ferox.png
+![ferox.png](../assets/driftingblues6_assets/ferox.png)
 
-Spammer seems interesting. Navigating to 192.168.156.219/spammer I'm prompted to dowload a file called spammer.zip. 
+Spammer seems interesting. Navigating to 192.168.156.219/spammer I'm prompted to download a file called spammer.zip. 
 
 ```text
 ┌──(ryan㉿kali)-[~/PG/DriftingBlues6]
@@ -59,7 +59,7 @@ Looks like it is indeed a zip file, and it looks like it may hold credentials. U
 
 Lets crack the password using fcrackzip:
 
-fcrack.png
+![fcrack.png](../assets/driftingblues6_assets/fcrack.png)
 
 Cool, we now have the password, lets unzip it:
 
@@ -75,9 +75,9 @@ Archive:  spammer.zip
 mayer:lionheart
 ```
 
-Nice, we were able to use these credentials to login:
+Nice, we were able to use these credentials to login to the textpattern webpage:
 
-login.png
+![login.png](../assets/driftingblues6_assets/login.png)
 
 ### Exploitation
 
@@ -85,19 +85,21 @@ Looking at possible vulnerabilities here, I find the following: https://www.expl
 
 This is interesting because it tells us we can upload malicious files to the server, and just as importantly where those files are saved.
 
+![exploit.png](../assets/driftingblues6_assets/exploit.png)
+
 Lets try and use PentestMonkey's php-reverse-shell.php here rather than just a webshell.
 
 First we'll need to update the IP and port we'll be listening on in the script:
 
-php.png
+![php.png](../assets/driftingblues6_assets/php.png)
 
-Then we can upload it to the files section of the page:
+Then we can upload it to the file section of the page:
 
-upload.png
+![upload.png](../assets/driftingblues6_assets/upload.png)
 
 Next, after setting up a NetCat listener, we can trigger the exploit by navigating to http://192.168.156.219/textpattern/files/php-reverse-shell.php
 
-The page should just hang, and if we check ur listener, we can confirm we've caught the shell back:
+The page should just hang, and if we check our listener, we can confirm we've caught the shell back:
 
 ```text
 ┌──(ryan㉿kali)-[~/PG/DriftingBlues6]
@@ -115,17 +117,17 @@ $ hostname
 driftingblues
 ```
 
-Interesting, it appears there are no low-level users in the `/home` directory. Lets just straight for root here.
+Interesting, it appears there are no low-level users in the `/home` directory. Lets just go straight for root here.
 
 ### Privilege Escalation
 
 Lets go ahead and transfer over LinPEAS to help with enumerating a privilege escalation vector:
 
-transfer.png
+![transfer.png](../assets/driftingblues6_assets/transfer.png)
 
 Linpeas finds the box is likely vulnerable to DirtyCow.
 
-dc.png
+![dc.png](../assets/driftingblues6_assets/dc.png)
 
 Lets give it a shot:
 
@@ -164,7 +166,7 @@ firefart@driftingblues:~# pwd
 
 Nice that worked! Lets grab the final flag:
 
-root_flag.png
+![root_flag.png](../assets/driftingblues6_assets/root_flag.png)
 
 Thanks for following along!
 
