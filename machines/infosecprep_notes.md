@@ -74,15 +74,15 @@ Nmap done: 1 IP address (1 host up) scanned in 35.15 seconds
 
 Heading to the site we see it is tunning WordPress:
 
-site.png
+![site.png](../assets/infosecprep_assets/site.png)
 
 Taking a look at `/secret.txt` listed in the Nmap output we find some base64 encoded text:
 
-secret.png
+![secret.png](../assets/infosecprep_assets/secret.png)
 
 We can copy this into https://gchq.github.io/CyberChef for decoding and we find it's actually an SSH key!
 
-chef.png
+![chef.png](../assets/infosecprep_assets/chef.png)
 
 Back on the WordPress site we find in the instructions `Oh yea! Almost forgot the only user on this box is “oscp”.`
 
@@ -138,23 +138,23 @@ oscp
 
 We can now read the local.txt file:
 
-user_flag.png
+![user_flag.png](../assets/infosecprep_assets/user_flag.png)
 
 ### Privilege Escalation
 
 Lets transfer over LinPEAS to help with enumeration:
 
-transfer.png
+![transfer.png](../assets/infosecprep_assets/transfer.png)
 
 Cool, LinPEAS finds that bash has the SUID bit set:
 
-bash.png
+![bash.png](../assets/infosecprep_assets/bash.png)
 
 This should make for a really easy privesc.
 
 Lets head over to https://gtfobins.github.io/gtfobins/bash/#suid and grab the command we'll need:
 
-gtfo.png
+![gtfo.png](../assets/infosecprep_assets/gtfo.png)
 
 We can run it just as GTFObins says:
 
@@ -169,7 +169,7 @@ uid=1000(oscp) gid=1000(oscp) euid=0(root) egid=0(root) groups=0(root),4(adm),24
 
 We can now grab the final flag of the challenge:
 
-root_flag.png
+![root_flag.png](../assets/infosecprep_assets/root_flag.png)
 
 Thanks for following along!
 
