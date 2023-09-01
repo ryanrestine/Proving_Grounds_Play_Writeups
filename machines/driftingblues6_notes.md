@@ -32,7 +32,7 @@ Nmap done: 1 IP address (1 host up) scanned in 14.87 seconds
 
 Heading to the site we find a simple page:
 
-site.png
+![site.png](../assets/driftingblues6_assets/site.png)
 
 And navigating to the `/textpattern/textpattern` found in robots.txt in the Nmap results, we find a login page:
 
