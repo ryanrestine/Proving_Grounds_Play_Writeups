@@ -52,13 +52,13 @@ Nmap done: 1 IP address (1 host up) scanned in 15.99 seconds
 
 Checking out the site on port 80 we find a basic static page:
 
-site.png
+![site.png](../assets/moneybox_assets/site.png)
 
 Using feroxbuster to scan for directories, we find a `/blogs` page:
 
-ferox.png
+![ferox.png](../assets/moneybox_assets/ferox.png)
 
-blogs.png
+![blogs.png](../assets/moneybox_assets/blogs.png)
 
 If we check out the source code we find a comment way down at the bottom of the page:
 
@@ -68,11 +68,11 @@ If we check out the source code we find a comment way down at the bottom of the 
 
 Navigating to http://192.168.235.230/S3cr3t-T3xt/ we find another static page:
 
-secret.png
+![secret.png](../assets/moneybox_assets/secret.png)
 
 And another comment buried in the page source: `<!..Secret Key 3xtr4ctd4t4 >`
 
-Not positive what to make of this, lets keep on enumerating.
+Not positive what to make of this, so lets keep on enumerating.
 
 Looking at FTP I see anonymous access is enabled, and there is an image we can grab:
 
@@ -103,11 +103,11 @@ local: trytofind.jpg remote: trytofind.jpg
 
 Taking a look at the image we find a cool hacker-cat:
 
-try.png
+![try.png](../assets/moneybox_assets/try.png)
 
 ### Exploitation
 
-Using steghide and the credential 3xtr4ctd4t4 discovered earlier, we are able to see there is some stegonagraphy in the image and we can extract a file called data.txt:
+Using steghide and the credential 3xtr4ctd4t4 discovered earlier, we are able to see there is some steganography in the image and we can extract a file called data.txt:
 
 ```text
 ┌──(ryan㉿kali)-[~/PG/Moneybox]
@@ -125,10 +125,9 @@ Don't Underestimate it.......
 
 Cool, now we have a username and also know that there may be some weak password use here too. 
 
-
 Lets try and crack renu's password for SSH using hydra:
 
-hydra.png
+![hydra.png](../assets/moneybox_assets/hydra.png)
 
 Nice, that worked!
 
@@ -158,7 +157,7 @@ renu@MoneyBox:~$ hostname
 MoneyBox
 ```
 
-user_flag.png
+![user_flag.png](../assets/moneybox_assets/user_flag.png)
 
 ### Privilege Escalation
 
@@ -249,7 +248,7 @@ User lily may run the following commands on MoneyBox:
 
 Heading to https://gtfobins.github.io/gtfobins/perl/#sudo we get the exact command we'll need to exploit this:
 
-gtfo.png
+![gtfo.png](../assets/moneybox_assets/gtfo.png)
 
 Lets try it:
 
@@ -263,7 +262,7 @@ uid=0(root) gid=0(root) groups=0(root)
 
 Nice! We're now root on this machine. All that's left to do now is grab the final flag:
 
-root_flag.png
+![root_flag.png](../assets/moneybox_assets/root_flag.png)
 
 Thanks for following along!
 
