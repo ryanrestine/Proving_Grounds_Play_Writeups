@@ -8,5 +8,6 @@ A place for PG Play CTF writeups
 - DriftingBlues6
 - InfosecPrep
 - Katana
+- Moneybox
 - Shakabrah
 - SoSimple
