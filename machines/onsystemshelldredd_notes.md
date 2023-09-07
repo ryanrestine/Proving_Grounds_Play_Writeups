@@ -122,7 +122,7 @@ ShellDredd
 
 We can now grab the local.txt flag:
 
-user_flag.png
+![user_flag.png](../assets/onsystemshelldredd_assets/user_flag.png)
 
 ### Privilege Escalation
 
