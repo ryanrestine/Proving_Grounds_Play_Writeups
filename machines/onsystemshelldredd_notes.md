@@ -128,15 +128,15 @@ We can now grab the local.txt flag:
 
 Lets transfer over LinPEAS to help with enumerating a privilege escalation vector:
 
-transfer.png
+![transfer.png](../assets/onsystemshelldredd_assets/transfer.png)
 
 LinPeas finds a couple of programs with the SUID bit set we may be able to use to escalate privlieges:
 
-suid.png
+![suid.png](../assets/onsystemshelldredd_assets/suid.png)
 
 Lets head over to https://gtfobins.github.io/gtfobins/cpulimit/ to get the command we'll need to exploit this:
 
-gtfo.png
+![gtfo.png](../assets/onsystemshelldredd_assets/gtfo.png)
 
 We can exploit this by running:
 
@@ -152,7 +152,7 @@ uid=1000(hannah) gid=1000(hannah) euid=0(root) egid=0(root) groups=0(root),24(cd
 
 And can grab the proof.txt flag:
 
-root_flag.png
+![root_flag.png](../assets/onsystemshelldredd_assets/root_flag.png)
 
 Thanks for following along!
 
