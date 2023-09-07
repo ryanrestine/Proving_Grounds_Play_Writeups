@@ -10,5 +10,6 @@ A place for PG Play CTF writeups
 - InfosecPrep
 - Katana
 - Moneybox
+- OnSystemShellDredd
 - Shakabrah
 - SoSimple
