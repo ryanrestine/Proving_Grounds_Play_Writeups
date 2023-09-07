@@ -37,7 +37,7 @@ Nmap done: 1 IP address (1 host up) scanned in 15.37 seconds
 
 Heading to the site on port 80 we find a default Apache landing page:
 
-site.png
+![site.png](../assets/election1_assets/site.png)
 
 But manually checking for http://192.168.235.211/robots.txt we find a few entries:
 
@@ -50,13 +50,15 @@ election
 
 Navigating to http://192.168.235.211/election/ we find one election candidate named Love:
 
-love.png
+![love.png](../assets/election1_assets/love.png)
 
 Kicking off some directory fuzzing against http://192.168.235.211/election/ we find `/admin/logs` which seems interesting. 
 
-index.png
+![ferox.png](../assets/election1_assets/ferox.png)
 
-Downloading the .logs file we find love's credentials:
+![index.png](../assets/election1_assets/index.png)
+
+Downloading the .log file we find love's credentials:
 
 ```text
 ┌──(ryan㉿kali)-[~/PG/Election1]
@@ -105,29 +107,29 @@ election
 
 We can now grab the local.txt flag:
 
-user_flag.png
+![user_flag.png](../assets/election1_assets/user_flag.png)
 
 ### Privilege Escalation
 
 Lets go ahead and transfer over LinPEAS to help with enumerating a priveilege escalation vector:
 
-transfer.png
+![transfer.png](../assets/election1_assets/transfer.png)
 
 LinPEAS finds an interesting service worth looking into:
 
-lp.png
+![lp.png](../assets/election1_assets/lp.png)
 
 Searching for CVE-2019-12181 I find this exploit: https://www.exploit-db.com/exploits/47009
 
 This seems promising. Lets copy the exploit to the target, compile it there, and run it.
 
-exploit.png
+![exploit.png](../assets/election1_assets/exploit.png)
 
 Nice, that worked! 
 
 All we need to do now is grab the proof.txt flag:
 
-root_flag.png
+![root_flag.png](../assets/election1_assets/root_flag.png)
 
 Thanks for following along!
 
