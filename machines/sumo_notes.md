@@ -36,13 +36,13 @@ Nmap done: 1 IP address (1 host up) scanned in 15.46 seconds
 
 Taking a look at the page on port 80 we find a static, generic It Works page:
 
-site.png
+![site.png](../assets/sumo_assets/site.png)
 
 Kicking off a Nikto scan against the target, we find a `/cgi-bin/test` directory and Nikto indicates it may be vulnerable to ShellShock.
 
-nikto.png
+![nikto.png](../assets/sumo_assets/nikto.png)
 
-Lets try to exploit this.
+Lets try it out.
 
 ### Exploitation
 
@@ -71,13 +71,13 @@ ubuntu
 
 From here I can grab the local.txt flag:
 
-user_flag.png
+![user_flag.png](../assets/sumo_assets/user_flag.png)
 
 ### Privilege Escalation
 
 Transfering over LinPEAS, we see that the box is vulnerable to Dirty Cow:
 
-lp.png
+![lp.png](../assets/sumo_assets/lp.png)
 
 We can transfer the exploit over, but get an error when trying to compile:
 
@@ -138,7 +138,7 @@ uid=0(firefart) gid=0(root) groups=0(root)
 
 Nice, that worked. Lets grab the final flag:
 
-root_flag.png
+![root_flag.png](../assets/sumo_assets/root_flag.png)
 
 Thanks for following along!
 
