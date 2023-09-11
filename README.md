@@ -13,3 +13,4 @@ A place for PG Play CTF writeups
 - OnSystemShellDredd
 - Shakabrah
 - SoSimple
+- Sumo
