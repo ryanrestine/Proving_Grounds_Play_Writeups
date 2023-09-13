@@ -50,7 +50,7 @@ We can see from the Nmap results the site on port 80 is redirecting to http://su
 
 Now heading to the website we see it is running WordPress.
 
-site.png
+![site.png](../assets/sunsetmidnight_assets/site.png)
 
 After enumerating HTTP for a bit and nit finding much, I decided to kick off password bruteforcing against Mysql on port 3306 using Hydra:
 
