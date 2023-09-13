@@ -54,7 +54,7 @@ Now heading to the website we see it is running WordPress.
 
 After enumerating HTTP for a bit and nit finding much, I decided to kick off password bruteforcing against Mysql on port 3306 using Hydra:
 
-brute.png
+![brute.png](../assets/sunsetmidnight_assets/brute.png)
 
 Cool, Hydra found a working password. Lets login to the database with this:
 
@@ -91,7 +91,7 @@ Rows matched: 1  Changed: 1  Warnings: 0
 
 We can now head to http://sunset-midnight/wp-admin/ and login to the WordPress site with admin:password.
 
-login.png
+![login.png](../assets/sunsetmidnight_assets/login.png)
 
 ### Exploitation
 
@@ -99,7 +99,7 @@ From here lets grab a copy of PentestMonkey's php-reverse-shell.php and overwrit
 
 First we'll need to update the IP and port fields with our correct information:
 
-php.png
+![php.png](../assets/sunsetmidnight_assets/php.png)
 
 Then changing the theme to twentynineteen, I copied the malicious PHP code into the header.php file, and with a NetCat listener going navigating back to http://sunset-midnight to trigger the shell:
 
@@ -123,15 +123,15 @@ midnight
 
 From here I can grab the local.txt flag:
 
-user_flag.png
+![user_flag.png](../assets/sunsetmidnight_assets/user_flag.png)
 
 ### Privilege Escalation
 
 Taking a look in `/var/www/html/wordpress` we can access the wp-config.php file, which has Jose's password:
 
-cred.png
+![cred.png](../assets/sunsetmidnight_assets/cred.png)
 
-We can use the to `su jose` on the target:
+We can use this to `su jose` on the target:
 
 ```text
 www-data@midnight:/var/www/html/wordpress$ su jose
@@ -142,16 +142,16 @@ jose
 
 From here I'll transfer over LinPEAS to help with enumerating a privilege escalation vector:
 
-transfer.png
+![transfer.png](../assets/sunsetmidnight_assets/transfer.png)
 
 LinPEAS finds an interesting file with the SUID bit enabled:
 
-lp.png
+![lp.png](../assets/sunsetmidnight_assets/lp.png)
 
 Looks like the file is an executable:
 
 ```text
-night:/tmp$ file /usr/bin/status
+jose@midnight:/tmp$ file /usr/bin/status
 /usr/bin/status: setuid, setgid ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=0b60ab071f1d8a6295eedb7f6815e957f2936171, not stripped
 ```
 
@@ -173,7 +173,7 @@ Nice, that worked!
 
 Now lets grab the final flag:
 
-root_flag.png
+![root_flag.png](../assets/sunsetmidnight_assets/root_flag.png)
 
 Thanks for following along!
 
