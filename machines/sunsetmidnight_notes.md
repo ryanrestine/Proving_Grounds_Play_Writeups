@@ -52,7 +52,7 @@ Now heading to the website we see it is running WordPress.
 
 ![site.png](../assets/sunsetmidnight_assets/site.png)
 
-After enumerating HTTP for a bit and nit finding much, I decided to kick off password bruteforcing against Mysql on port 3306 using Hydra:
+After enumerating HTTP for a bit and not finding much, I decided to kick off password bruteforcing against Mysql on port 3306 using Hydra:
 
 ![brute.png](../assets/sunsetmidnight_assets/brute.png)
 
