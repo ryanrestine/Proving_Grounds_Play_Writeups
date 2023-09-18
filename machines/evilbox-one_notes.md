@@ -40,25 +40,25 @@ Heading to the site on port 80 we find a deafault Apache landing page:
 
 Manually trying for a robots.txt page we find:
 
-hello.png
+![hello.png](../assets/evilbox-one_assets/hello.png)
 
 Fuzzing for directories we find a `/secret/evil.php`
 
-ferox.png
+![ferox.png](../assets/evilbox-one_assets/ferox.png)
 
 But navigating to the page, its just a blank page. 
 
-Trying a few different directory traversals and continually getting blank pages rather than 404/ Not Found errors, made me wonder if the page was vulnerarble.
+Trying a few different directory traversals and continually getting blank pages rather than 404/ Not Found errors made me wonder if the page was vulnerarble.
 
 We can automate fuzzing for the vulnerabilty with ffuf:
 
 nice, ffuf found something for us.
 
-ffuf.png
+![ffuf.png](../assets/evilbox-one_assets/ffuf.png)
 
 We can navigate to http://192.168.171.212/secret/evil.php?command=/etc/passwd and confirm the vulnerability
 
-etc.png
+![etc.png](../assets/evilbox-one_assets/etc.png)
 
 Note: I always prefer to view LFIs in the page source because the formatting is usually cleaner and more readable.
 
@@ -76,7 +76,7 @@ Because we now that SSH is also open on the target, lets see if we can access th
 
 Nice that worked!
 
-id.png
+![id.png](../assets/evilbox-one_assets/id.png)
 
 Chnging the mode and trying to use the key we see it is passphrase protected.
 
@@ -96,21 +96,21 @@ Enter passphrase for key 'id_rsa':
 
 No worries, lets try to crack the passphrase using ssh2john:
 
-john.png
+![john.png](../assets/evilbox-one_assets/john.png)
 
 Cool, now that we have the passphrase we can SSH in and grab the local.txt flag:
 
-user_flag.png
+![user_flag.png](../assets/evilbox-one_assets/user_flag.png)
 
 ### Privilege Escalation
 
 Lets transfer over LinPEAS to help with enumeration:
 
-transfer.png
+![transfer.png](../assets/evilbox-one_assets/transfer.png)
 
 Nice, LinPEAS finds that the `/etc/passwd` file is writable.
 
-write.png
+![write.png](../assets/evilbox-one_assets/write.png)
 
 This should be a quick path to root:
 
@@ -125,7 +125,7 @@ root
 ```
 Nice, that worked. We can now grab the proof.txt flag:
 
-root_flag.png
+![root_flag.png](../assets/evilbox-one_assets/root_flag.png)
 
 Thanks for following along!
 
