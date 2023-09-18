@@ -36,7 +36,7 @@ Nmap done: 1 IP address (1 host up) scanned in 16.12 seconds
 
 Heading to the site on port 80 we find a deafault Apache landing page:
 
-site.png
+![site.png](../assets/evilbox-one_assets/site.png)
 
 Manually trying for a robots.txt page we find:
 
