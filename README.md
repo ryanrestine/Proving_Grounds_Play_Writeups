@@ -7,6 +7,7 @@ A place for PG Play CTF writeups
 - DC-04
 - DriftingBlues6
 - Election1
+- EvilBox-One
 - InfosecPrep
 - Katana
 - Moneybox
