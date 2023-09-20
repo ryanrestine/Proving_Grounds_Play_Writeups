@@ -3,7 +3,7 @@
 #### Ip: 192.168.199.84
 #### Name: Tre
 #### Difficulty: Intermediate
-#### Community Rating: hard
+#### Community Rating: Hard
 
 ----------------------------------------------------------------------
 
