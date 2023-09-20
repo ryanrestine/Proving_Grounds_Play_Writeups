@@ -39,7 +39,7 @@ Nmap done: 1 IP address (1 host up) scanned in 16.70 seconds
 
 Heading to the site on port 80 we find just an image:
 
-site.png
+![site.png](../assets/tre_assets/site.png)
 
 If we kick off some directory fuzzing with Feroxbuster using:
 
@@ -50,35 +50,35 @@ If we kick off some directory fuzzing with Feroxbuster using:
 
 We find some mantisbt directories. The `/config` directory seems especially interesting:
 
-mantis.png
+![mantis.png](../assets/tre_assets/mantis.png)
 
 Heading to the page we find an index of files:
 
-index.png
+![index.png](../assets/tre_assets/index.png)
 
 CLicking into `a.txt` we find some DB credentials. 
 
-creds.png
+![creds.png](../assets/tre_assets/creds.png)
 
 Trying these on the mantisbt page however, we find they are no good there:
 
-nope.png
+![nope.png](../assets/tre_assets/nope.png)
 
 Looking back at our running Feroxbuster scan, we see it has picked up an `/adminer.php` page:
 
-adminer.png
+![adminer.png](../assets/tre_assets/adminer.png)
 
 Lets try the DB credentials we discovered earlier here:
 
-login.png
+![login.png](../assets/tre_assets/login.png)
 
 Nice that worked:
 
-in.png
+![in.png](../assets/tre_assets/in.png)
 
 In the SQL Command area of the page we can begin enumerating the database. After discovering a `mantis_user_table` I ran `select * from mantis_user_table` and discovered some more credentials:
 
-sql.png
+![sql.png](../assets/tre_assets/sql.png)
 
 Tre's 'realname' looks a bit like a password. Lets try it using SSH:
 
@@ -105,7 +105,7 @@ tre
 
 Cool, that worked! We can now grab the local.txt flag:
 
-user_flag.png
+![user_flag.png](../assets/tre_assets/user_flag.png)
 
 ### Privilege Escalation
 
@@ -122,11 +122,11 @@ User tre may run the following commands on tre:
 
 Lets also load up LinPEAS to help out with more enumeration:
 
-transfer.png
+![transfer.png](../assets/tre_assets/transfer.png)
 
-Linpeas finds that check-system is writable. We may be able to exploit this
+Linpeas finds that check-system is writable. We may be able to exploit this.
 
-check.png
+![check.png](../assets/tre_assets/check.png)
 
 Double checking the permissions, we see it is owned by root but we have the ability to read and write to it:
 
@@ -137,7 +137,7 @@ tre@tre:/usr/bin$ ls -la check-system
 
 If we add the SUID bit to `/bin/bash` and then restart the machine using `sudo shutdown` when the machine reboots we should be able to easily get the root flag:
 
-nano.png
+![nano.png](../assets/tre_assets/nano.png)
 
 We can then shutdown the machine:
 
@@ -173,7 +173,7 @@ uid=1000(tre) gid=1000(tre) euid=0(root) egid=0(root) groups=0(root),24(cdrom),2
 
 We can now grab the final flag:
 
-root_flag.png
+![root_flag.png](../assets/tre_assets/root_flag.png)
 
 Thanks for following along!
 
