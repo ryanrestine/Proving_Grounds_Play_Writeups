@@ -50,7 +50,7 @@ If we kick off some directory fuzzing with Feroxbuster using:
 
 We find some mantisbt directories. The `/config` directory seems especially interesting:
 
-![mantis.png](../assets/tre_assets/mantis.png)
+![manits.png](../assets/tre_assets/manits.png)
 
 Heading to the page we find an index of files:
 
