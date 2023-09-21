@@ -1,9 +1,9 @@
 # PG Play - Tre
 
-##### Ip: 192.168.199.84
-##### Name: Tre
-##### Difficulty: Intermediate
-##### Community Rating: Hard
+#### Ip: 192.168.199.84
+#### Name: Tre
+#### Difficulty: Intermediate
+#### Community Rating: Hard
 
 ----------------------------------------------------------------------
 
