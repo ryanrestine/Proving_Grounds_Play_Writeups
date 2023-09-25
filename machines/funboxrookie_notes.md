@@ -9,7 +9,7 @@
 
 ### Enumeration
 
-I'll kick off enumerating this box with an Nmap scan covering all TCP ports. To speed this along I'll also use the `--min-rate 10000` flag:
+I'll kick off enumerating this box with an Nmap scan covering all TCP ports. To speed this along I'll also use the `--min-rate 10000` flag as well as `-sC` and `-sV` to use basic scripts and enumerate versions:
 
 ```text
 ┌──(ryan㉿kali)-[~/PG/FunBoxRookie]
@@ -83,7 +83,7 @@ Archive:  tom.zip
 
 Lets use fcrackzip to brute force this password:
 
-fcrack.png
+![fcrack.png](../assets/funboxrookie_assets/fcrack.png)
 
 We can now unzip the file:
 
@@ -109,7 +109,7 @@ And login to the box:
 
 From here we can grab the local.txt file:
 
-user_flag.png
+![user_flag.png](../assets/funboxrookie_assets/user_flag.png)
 
 ### Privilege Escalation
 
@@ -124,7 +124,7 @@ tom@funbox2:~$ id
 uid=1000(tom) gid=1000(tom) groups=1000(tom),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lxd)
 ```
 
-Trying to change directories to begin enumerating for privilege escalation, we realize we a in a restricted shell:
+Trying to change directories to begin enumerating for privilege escalation, we realize we are in a restricted shell:
 
 ```text
 tom@funbox2:~$ cd /
@@ -133,11 +133,11 @@ tom@funbox2:~$ cd /
 
 Lets logout and SSH in again, but this time we'll also include the `-t bash` flag:
 
-bash.png
+![bash.png](../assets/funboxrookie_assets/bash.png)
 
 Back in tom's home directory we find a `.mysql_history` file, and it has toms credentials in it:
 
-creds.png
+![creds.png](../assets/funboxrookie_assets/creds.png)
 
 Nice! Because we know that tom is in the sudoers group, and we now have his password, we can easily elevate our shell to root level:
 
@@ -152,7 +152,7 @@ uid=0(root) gid=0(root) groups=0(root)
 
 And we can grab the final flag:
 
-root_flag.png
+![root_flag.png](../assets/funboxrookie_assets/root_flag.png)
 
 Thanks for following along!
 
