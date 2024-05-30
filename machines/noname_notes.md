@@ -30,7 +30,7 @@ Nmap done: 1 IP address (1 host up) scanned in 14.92 seconds
 
 Looking at the site on port 80 we find a "fake admin area"
 
-noname_site.png
+![noname_site.png](../assets/noname_assets/noname_site.png)
 
 Trying to insert a command we get the message `Fake ping executed`
 
