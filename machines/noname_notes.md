@@ -34,7 +34,7 @@ Looking at the site on port 80 we find a "fake admin area"
 
 Trying to insert a command we get the message `Fake ping executed`
 
-Opening WireShark and listening for packets, we can see the site is indeed able to ping our tun0 address:
+Opening WireShark and listening for packets, we can see the site is indeed able to reach our tun0 address. However this is likely just from the POST request from the form, as no ICMP packets were received.
 
 ![noname_ping.png](../assets/noname_assets/noname_ping.png)
 
