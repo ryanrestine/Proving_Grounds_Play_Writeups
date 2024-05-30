@@ -44,6 +44,8 @@ After quite awhile trying different command injection techniques, I was unable t
 
 Taking a step back and trying some directory fuzzing I find both an `/admin` page as well as a `/superadmin.php` page. 
 
+![noname_dirs.png](../assets/noname_assets/noname_dirs.png)
+
 `/admin` seemed to just be an image gallery. The page source however had an interesting comment: `<!--passphrase:harder-->`. We'll hold onto that and see if we can use it anywhere later.
 
 ### Exploitation
