@@ -34,27 +34,27 @@ Looking at the site on port 80 we find a "fake admin area"
 
 Trying to insert a command we get the message `Fake ping executed`
 
-Opening WireShark and listening for packets, we can see the site is indeed able to ping out tun0 address:
+Opening WireShark and listening for packets, we can see the site is indeed able to ping our tun0 address:
 
-noname_ping.png
+![noname_ping.png](../assets/noname_assets/noname_ping.png)
 
 Lets capture this request in Burp and see if we can execute any other commands then `ping`
 
 After quite awhile trying different command injection techniques, I was unable to to get any execution.
 
-Taking a step back and trying some directory  fuzzing I find both an `/admin` page as well as a `/superadmin.php` page. 
+Taking a step back and trying some directory fuzzing I find both an `/admin` page as well as a `/superadmin.php` page. 
 
 `/admin` seemed to just be an image gallery. The page source however had an interesting comment: `<!--passphrase:harder-->`. We'll hold onto that and see if we can use it anywhere later.
 
 ### Exploitation
 
-Navigating to `superadmin.php` we find a similar functionality as the "fake admin area", but this time we can see the ping being executing in our browser output:
+Navigating to `superadmin.php` we find a similar functionality as the "fake admin area", but this time we can see the ping being executed in our browser output:
 
-noname_admin_ping.png
+![noname_admin_ping.png](../assets/noname_assets/noname_admin_ping.png)
 
-I can now perform command injection in this field, confirming the fact with: `127.0.0.1 | id`
+I can now perform command injection in this field, confirming the vulnerability with: `127.0.0.1 | id`
 
-noname_ex.png
+![noname_ex.png](../assets/noname_assets/noname_ex.png)
 
 Still struggling to get a reverse shell, I decide to check out the superadmin.php file and see several different strings being blacklisted:
 
@@ -86,7 +86,7 @@ This will make getting a reverse shell a bit more tricky because so many charact
 
 Capturing the request in Burp, we can bypass the blacklist at least for now by inserting apostrophes between charcters:
 
-noname_bypass.png
+![noname_bypass.png](../assets/noname_assets/noname_bypass.png)
 
 But we'll still need to get a reverse shell here. Lets base64 encode a reverse shell onliner to try to bypass the blacklist:
 
@@ -124,23 +124,23 @@ haclabs
 
 I can now grab the local.txt flag:
 
-noname_local.png
+![noname_local.png](../assets/noname_assets/noname_local.png)
 
 ### Privilege Escalation
 
 Loading linpeas onto the target we see that `find` has the SUID bit set.
 
-noname_lin.png
+![noname_lin.png](../assets/noname_assets/noname_lin.png)
 
 Heading over to GTFObins.com we find the exact command we need to exploit this misconfiguration:
 
-noname_gtfo.png
+![noname_gtfo.png](../assets/noname_assets/noname_gtfo.png)
 
 `./find . -exec /bin/sh -p \; -quit`
 
 We can execute this command, elevate our shell to root, and grab the final flag:
 
-noname_root.png
+![noname_root.png](../assets/noname_assets/noname_root.png)
 
 Thanks for following along!
 
