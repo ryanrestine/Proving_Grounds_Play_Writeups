@@ -55,7 +55,7 @@ Looking at port 80 we find a Nagios landing page with a link to `/nagiosxi`.
 
 ![pgmonitoring_nagios_site.png](../assets/monitoring_assets/pgmonitoring_nagios_site.png)
 
-pgmonitoring_nagios_login.png
+![pgmonitoring_nagios_login.png](../assets/monitoring_assets/pgmonitoring_nagios_login.png)
 
 Looking around online I see that the default username is nagiosadmin, and after a couple of guesses I found the correct password of admin, and was able to login to the site. nagiosadmin:admin
 
@@ -93,9 +93,9 @@ www-data@ubuntu:/usr/local/nagiosxi/html/admin$ hostname
 hostname
 ubuntu
 ```
-Out of curiosity I went back and checked the `/admin/monitoringplugins.php` page used in the exploit and sure enough we found our malicios plugin:
+Out of curiosity I went back and checked the `/admin/monitoringplugins.php` page used in the exploit and sure enough we found our malicious plugin:
 
-pgmonitoring_plugin.png
+![pgmonitoring_plugin.png](../assets/monitoring_assets/pgmonitoring_plugin.png)
 
 ### Privilege Escalation
 
@@ -177,7 +177,7 @@ mysql> select * from xi_users;
 
 Looking at these results I realized that we already have the nagiosadmin password (admin), and here in mysql the contact email for nagiosadmin is root@localhost. We can't just `su root` and enter admin, but maybe we could find another exploit that attacks the vulnerabilty as well as escalates the shell.
 
-Looking around I find several different exploits attempting this, but unfortunately kept running into PHP issues and was unsuccesful. Before moving on I decided to give Metasploit a  hail-Mary shot, and it worked! I was able to exploit the RCE vulnerabilty, and this specific Metasploit module also used a malicious check_ping plugin and escalated us to root:
+Looking around I find several different exploits attempting this, but unfortunately kept running into PHP issues and was unsuccesful. Before moving on I decided to give Metasploit a hail-Mary shot, and it worked! I was able to exploit the RCE vulnerabilty, and this specific Metasploit module also used a malicious check_ping plugin and escalated us to root:
 
 ```text
 msf6 exploit(linux/http/nagios_xi_plugins_check_plugin_authenticated_rce) > run
@@ -213,7 +213,7 @@ root@ubuntu:/usr/local/nagiosxi/html/includes/components/profile#
 
 From here we can grab our flag:
 
-pgmonitoring_root.png
+![pgmonitoring_root.png](../assets/monitoring_assets/pgmonitoring_root.png)
 
 Thanks for following along!
 
