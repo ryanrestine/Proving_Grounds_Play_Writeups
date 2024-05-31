@@ -53,7 +53,7 @@ Nmap done: 1 IP address (1 host up) scanned in 25.92 seconds
 
 Looking at port 80 we find a Nagios landing page with a link to `/nagiosxi`. 
 
-pgmonitoring_nagios_site.png
+![pgmonitoring_nagios_site.png](../assets/monitoring_assets/pgmonitoring_nagios_site.png)
 
 pgmonitoring_nagios_login.png
 
