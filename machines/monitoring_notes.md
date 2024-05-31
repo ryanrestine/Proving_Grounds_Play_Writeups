@@ -61,7 +61,7 @@ Looking around online I see that the default username is nagiosadmin, and after 
 
 ### Exploitation
 
-Armed with these credentials I went looking for public exploits agains Nagios XI and found: https://www.exploit-db.com/exploits/49422.
+Armed with these credentials I went looking for public exploits against Nagios XI and found: https://www.exploit-db.com/exploits/49422.
 
 This exploit appears to exploit the Nagios Session Protection feature that is used in monitoring plugins and is supposed to protect agains CSRF.
 
