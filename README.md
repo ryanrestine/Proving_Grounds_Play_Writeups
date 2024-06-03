@@ -14,6 +14,7 @@ A place for PG Play CTF writeups
 - Katana
 - Lampiao
 - Moneybox
+- Monitoring
 - NoName
 - OnSystemShellDredd
 - Shakabrah
