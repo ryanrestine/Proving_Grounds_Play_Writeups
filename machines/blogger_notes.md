@@ -118,7 +118,7 @@ Gets us a pseudo-shell to work out of:
 
 Lets set up a netcat listener so we can get a proper reverse shell:
 
-![blogger_shell.png](../assets/blogger_assets/blogger_blogger_shell.png)
+![blogger_shell.png](../assets/blogger_assets/blogger_shell.png)
 
 Nice, we can now grab the local.txt flag:
 
