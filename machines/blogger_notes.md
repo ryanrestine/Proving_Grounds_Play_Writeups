@@ -47,7 +47,7 @@ However when I finally started clicking around in the various sub-directories in
 
 ![blogger_blog.png](../assets/blogger_assets/blogger_blog.png)
 
-Clicking on the link the browser attmepts to load blogger.pg, so lets add the to `/etc/hosts`
+Clicking on the link the browser attempts to load blogger.pg, so lets add the to `/etc/hosts`
 
 We can now access the real blog:
 
