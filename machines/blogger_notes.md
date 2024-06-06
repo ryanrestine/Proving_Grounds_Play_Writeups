@@ -35,7 +35,7 @@ Nmap done: 1 IP address (1 host up) scanned in 15.58 seconds
 
 Taking a look at the site on port 80 we find a blog:
 
-blogger_site.png
+![blogger_site.png](../assets/blogger_assets/blogger_site.png)
 
 We also notice a potential username James.
 
@@ -43,15 +43,15 @@ Using some directory we fuzzing we find an `/assets` directory.
 
 Not seeing much and trying to widen my directory scanning scope, I'm not finding anything of interest.
 
-However when i finally started clicking around in the various sub-directories in `/assets` I find `/assets/fonts/blog`
+However when I finally started clicking around in the various sub-directories in `/assets` I find `/assets/fonts/blog`
 
-blogger_blog.png
+![blogger_blog.png](../assets/blogger_assets/blogger_blog.png)
 
 Clicking on the link the browser attmepts to load blogger.pg, so lets add the to `/etc/hosts`
 
 We can now access the real blog:
 
-blogger_real_site.png
+![blogger_real_site.png](../assets/blogger_assets/blogger_real_site.png)
 
 And looking more closely we see the username j@m3s and that the blog is using WordPress.
 
@@ -80,7 +80,7 @@ _______________________________________________________________
 [+] URL: http://blogger.pg/assets/fonts/blog/ [192.168.176.217]
 ```
 
-Interestingly the blog is all about the OWASP top 10 vulnerabilities.
+Interestingly the blog is all about the OWASP Top 10 Vulnerabilities.
 
 Going back to our scan, it confirmed the user j@m3s, as well as discovered an `/wp-content/uploads` directory, but didn't find any plugins or major vulnerabilities for us. This is probably because I'm not using an api token with the scan.
 
@@ -98,7 +98,7 @@ wpscan --url http://blogger.pg/assets/fonts/blog/ --wp-content-dir wp-admin --us
 
 No luck with the password bruteforce, but the plugin scan revealed an interesting plugin: wpdiscuz
 
-blogger_wpdiscuz.png
+![blogger_wpdiscuz.png](../assets/blogger_assets/blogger_wpdiscuz.png)
 
 Searching for exploits I find an unauthenticated RCE exploit: https://www.exploit-db.com/exploits/49967
 
@@ -114,15 +114,15 @@ python3 wpDiscuz_RemoteCodeExec.py -u http://blogger.pg/assets/fonts/blog -p '/?
 
 Gets us a pseudo-shell to work out of:
 
-blogger_rce.png
+![blogger_rce.png](../assets/blogger_assets/blogger_rce.png)
 
 Lets set up a netcat listener so we can get a proper reverse shell:
 
-blogger_shell.png
+![blogger_shell.png](../assets/blogger_assets/blogger_blogger_shell.png)
 
 Nice, we can now grab the local.txt flag:
 
-blogger_local_flag.png
+![blogger_local_flag.png](../assets/blogger_assets/blogger_local_flag.png)
 
 ### Privilege Escalation
 
@@ -210,7 +210,7 @@ Unfortunately, I was unable to crack this hash using hashcat:
 hashcat james_hash /usr/share/wordlists/rockyou.txt -m 400
 ```
 
-Going back to the home directory I can see there is a user vagrant. Vagrant default credentials can be vagrant:vagrant, so lets try to `su vagrant` with vagrant for the password:
+Going back to the `/home` directory I can see there is a user vagrant. Vagrant default credentials can be vagrant:vagrant, so lets try to `su vagrant` with vagrant for the password:
 
 ```
 www-data@ubuntu-xenial:/home$ ls
@@ -234,9 +234,9 @@ User vagrant may run the following commands on ubuntu-xenial:
     (ALL) NOPASSWD: ALL
 ```
 
-We see we can do whatever want with sudo. Lets just `sudo su root` and grab the flag:
+We see we can do whatever want with sudo. Lets just `sudo su root` and grab the final flag:
 
-blogger_root.png
+![blogger_root.png](../assets/blogger_assets/blogger_root.png)
 
 Thanks for following along!
 
