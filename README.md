@@ -2,6 +2,7 @@
 
 A place for PG Play CTF writeups
 
+- Blogger
 - CyberSploit1
 - DC-01
 - DC-02
