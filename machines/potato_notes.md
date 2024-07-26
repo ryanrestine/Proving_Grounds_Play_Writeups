@@ -1,5 +1,4 @@
 # PG Play
-## 7.26.24
 ------------------------------------
 ### IP: 192.168.186.101
 ### Name: Potato
@@ -38,7 +37,7 @@ Nmap done: 1 IP address (1 host up) scanned in 21.10 seconds
 
 Looking at the page on port 80 we see a site seemingly under construction with an image of a potato:
 
-pgplay_potato_site.png
+![pgplay_potato_site.png](../assets/potato_assets/pgplay_potato_site.png)
 
 I alos notice FTP running on 2112 has anonymous access enabled and I can see there are a few file in there.
 
