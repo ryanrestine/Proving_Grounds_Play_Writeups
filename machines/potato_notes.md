@@ -197,7 +197,7 @@ uid=0(root) gid=0(root) groups=0(root)
 
 We can now grab the final flag:
 
-![pgplay_root_flag.png](../assets/potato_assets/pgplay_potato_root_flag.png)
+![pgplay_root_flag.png](../assets/potato_assets/pgplay_root_flag.png)
 
 Thanks for following along!
 
