@@ -121,7 +121,7 @@ Going back and looking at the index.php.bak file more closely, we can see that t
 
 There is a nice writeup of this type of bypass at https://blog.0daylabs.com/2015/09/21/csaw-web-200-write-up/
 
-Essentially if we pass in `password[]=whatever` the brackets will create an empty array, setting `password` to 0 and PHP will (for some reason?) render `NULL == 0` as true. 
+Essentially if we pass in `password[]=whatever` the brackets will create an empty array, setting `password` to 0 and PHP will (for some reason?) render `NULL == 0` as true. I don't know much about PHP, but I think the fix for this may be using the operator `===` rather than `==`?
 
 Lets capture a login request in Burp:
 
