@@ -39,7 +39,7 @@ Looking at the page on port 80 we see a site seemingly under construction with a
 
 ![pgplay_potato_site.png](../assets/potato_assets/pgplay_potato_site.png)
 
-I alos notice FTP running on 2112 has anonymous access enabled and I can see there are a few file in there.
+I also notice FTP running on 2112 has anonymous access enabled and I can see there are a few file in there.
 
 Lets kick off some directory fuzzing while we check out FTP:
 
@@ -97,25 +97,27 @@ The local time is: %T
 
 Opening index.php.bak we find credentials to the `/dashboard.php` endpoint:
 
-pgplay_potato_index.png
+![pgplay_potato_index.png](../assets/potato_assets/pgplay_potato_index.png)
 
-However navigating to http://192.168.186.101/dashboard.php we get a 404 not found error. 
+However navigating to http://192.168.186.101/dashboard.php we get a 404 error. 
 
 Turning back to our directory fuzzing we find an `/admin` page.
 
+![pgplay_potato_dirs.png](../assets/potato_assets/pgplay_potato_dirs.png)
+
 Navigating here we do find a login panel:
 
-pgplay_potato_login.png
+![pgplay_potato_login.png](../assets/potato_assets/pgplay_potato_login.png)
 
 But our discovered credentials don't work here:
 
-pgplay_potato_fail.png
+![pgplay_potato_fail.png](../assets/potato_assets/pgplay_potato_fail.png)
 
-### Exploitation/ FootHold
+### Exploitation/ Foothold
 
 Going back and looking at the index.php.bak file more closely, we can see that the login panel is using `strcmp` for the POST request.
 
-pgplay_potato_strcmp.png
+![pgplay_potato_strcmp.png](../assets/potato_assets/pgplay_potato_strcmp.png)
 
 There is a nice writeup of this type of bypass at https://blog.0daylabs.com/2015/09/21/csaw-web-200-write-up/
 
@@ -123,21 +125,21 @@ Essentially if we pass in `password[]=whatever` the brackets will create an empt
 
 Lets capture a login request in Burp:
 
-pgplay_potato_burp.png
+![pgplay_potato_burp.png](../assets/potato_assets/pgplay_potato_burp.png)
 
 Nice, that worked, We can now access the dashboard:
 
-pgplay_potato_dashboard.png
+![pgplay_potato_dashboard.png](../assets/potato_assets/pgplay_potato_dashboard.png)
 
 Looking at the `logs` page we see we can select which log we'd like to view and it's displayed for us in browser.
 
-pgplay_potato_logs.png
+![pgplay_potato_logs.png](../assets/potato_assets/pgplay_potato_logs.png)
 
 Lets capture this in Burp and see if we are able to access anything else using the functionality.
 
 Nice, with a little playing around we were able to access `/etc/passwd`:
 
-pgplay_potato_lfi1.png
+![pgplay_potato_lfi1.png](../assets/potato_assets/pgplay_potato_lfi1.png)
 
 And scrolling down in the file we find the password hash for webadmin:
 
@@ -147,9 +149,11 @@ webadmin:$1$webadmin$3sXBxGUtDGIFAcnNTNhi6/
 
 Lets try cracking this with john:
 
+![pgplay_potato_john.png](../assets/potato_assets/pgplay_potato_john.png)
+
 We now have webadmin's credentials: `webadmin:dragon`
 
-And we can use these to SSH i tot he target:
+And we can use these to SSH in to the target:
 
 ```
 ┌──(ryan㉿kali)-[~/PG/Play/Potato]
@@ -165,7 +169,7 @@ Welcome to Ubuntu 20.04 LTS (GNU/Linux 5.4.0-42-generic x86_64)
 
 We can now access the local.txt flag:
 
-pgplay_potato_local_flag.png
+![pgplay_potato_local_flag.png](../assets/potato_assets/pgplay_potato_local_flag.png)
 
 ### Privilege Escalation
 
@@ -193,7 +197,7 @@ uid=0(root) gid=0(root) groups=0(root)
 
 We can now grab the final flag:
 
-pgplay_root_flag.png
+![pgplay_root_flag.png](../assets/potato_assets/pgplay_potato_root_flag.png)
 
 Thanks for following along!
 
