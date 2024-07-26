@@ -18,6 +18,7 @@ A place for PG Play CTF writeups
 - Monitoring
 - NoName
 - OnSystemShellDredd
+- Potato
 - Shakabrah
 - SoSimple
 - Sumo
