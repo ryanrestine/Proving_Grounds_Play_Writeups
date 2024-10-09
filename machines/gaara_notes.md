@@ -4,7 +4,6 @@
 #### Name: Gaara
 #### Difficulty: Easy
 #### Community Rating: Easy
-#### Date: 11.3.23
 
 ----------------------------------------------------------------------
 
@@ -33,18 +32,17 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 15.63 seconds
 ```
 
-Site is just an image of an anime guy
+The site on port 80 is just an image of an anime character.
 
-Feroxbusted didnt find anything:
+Trying directory fuzzing, Feroxbusted didn't find anything:
+
 ```
 ┌──(ryan㉿kali)-[~/PG/Gaara]
 └─$ feroxbuster --url http://192.168.198.142 -q
 ```
 
-Trying gobuster with a bigger directory list. 
+But trying gobuster with a bigger directory list finally found http://192.168.198.142/Cryoserver with a few entries at the bottom of the page:
 
-
-Finally found http://192.168.198.142/Cryoserver with a few entries at the bottom of the page:
 
 ```
 ┌──(ryan㉿kali)-[~/PG/Gaara]
@@ -77,7 +75,7 @@ Progress: 220560 / 220561 (100.00%)
 
 Each enpoint is a long text document going over the history of the anime.
 
-pgpl_gaara_words.png
+![pgpl_gaara_words.png](../assets/gaara_assets/pgpl_gaara_words.png)
 
 We can copy and paste the contents of each endpoint into a .txt file to see if they contain the same amount of words:
 
