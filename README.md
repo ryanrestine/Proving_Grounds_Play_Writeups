@@ -11,6 +11,7 @@ A place for PG Play CTF writeups
 - Election1
 - EvilBox-One
 - FunBoxRookie
+- Gaara
 - InfosecPrep
 - Katana
 - Lampiao
