@@ -73,7 +73,7 @@ Progress: 220560 / 220561 (100.00%)
 /Kazekage
 /iamGaara
 
-Each enpoint is a long text document going over the history of the anime.
+Each endpoint is a long text document going over the history of the anime.
 
 ![pgpl_gaara_words.png](../assets/gaara_assets/pgpl_gaara_words.png)
 
@@ -93,11 +93,11 @@ We can copy and paste the contents of each endpoint into a .txt file to see if t
    40  2632 16131 temari.txt
 ```
 
-Interesting, it appears that /iamGaara is shorter than the other enpoints
+Interesting, it appears that `/iamGaara` is shorter than the other enpoints
 
-### Exploitation / Foot Hold
+### Exploitation / FootHold
 
-Lets try using cewl to generate a wordlist for /iamGaara and /Temari
+Lets try using `cewl` to generate a wordlist for `/iamGaara` and `/Temari`
 
 
 ```
@@ -108,7 +108,7 @@ Lets try using cewl to generate a wordlist for /iamGaara and /Temari
 └─$ cewl http://192.168.198.142/Temari > cewl2.txt 
 ```
 
-The enpoints above also appear to be usernames so I'll ad those to users.txt file
+The endpoints above also appear to be usernames so I'll ad those to users.txt file
 
 ```
 ┌──(ryan㉿kali)-[~/PG/Play/Gaara]
@@ -119,7 +119,7 @@ iamgaara
 gaara
 ```
 
-After getting no hist against SSH with my cewl wordlists, I turned to trusty rockyou.txt.
+After getting no hits against SSH with my cewl wordlists, I turned to trusty rockyou.txt.
 
 ```
 ┌──(ryan㉿kali)-[~/PG/Play/Gaara]
@@ -145,17 +145,17 @@ Linux Gaara 4.19.0-13-amd64 #1 SMP Debian 4.19.160-2 (2020-11-28) x86_64
 
 We can now access the local.txt flag:
 
-pgpl_gaara_local.png
+![pgpl_gaara_local.png](../assets/gaara_assets/pgpl_gaara_local.png)
 
 ### Privilege Escalation
 
 Loading LinPeas onto the target, we see that `gdb` has the SUID bit set.
 
-pgpl_gaara_lp2.pg
+![pgpl_gaara_lp2.pg](../assets/gaara_assets/pgpl_gaara_lp2.png)
 
 Lets head to GTFObins for the command we'll need to exploit this:
 
-pgpl_gaara_gtfo.png
+![pgpl_gaara_gtfo.png](../assets/gaara_assets/pgpl_gaara_gtfo.png)
 
 We can run it as shown:
 
@@ -184,7 +184,7 @@ root
 
 We can now access the final flag:
 
-pgpl_gaara_root.png
+![pgpl_gaara_root.png](../assets/gaara_assets/pgpl_gaara_root.png)
 
 Thanks for following along!
 
