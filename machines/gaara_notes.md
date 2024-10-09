@@ -108,7 +108,7 @@ Lets try using `cewl` to generate a wordlist for `/iamGaara` and `/Temari`
 └─$ cewl http://192.168.198.142/Temari > cewl2.txt 
 ```
 
-The endpoints above also appear to be usernames so I'll ad those to users.txt file
+The endpoints above also appear to be usernames so I'll add those to users.txt file
 
 ```
 ┌──(ryan㉿kali)-[~/PG/Play/Gaara]
