@@ -50,7 +50,7 @@ We can upload a simple webshell:
 
 And confirm execution
 
-![pg_fbee_id.png](../assets/funboxeasyenum_assets/pg_fbee_id_.png)
+![pg_fbee_id.png](../assets/funboxeasyenum_assets/pg_fbee_id.png)
 
 Lets issues a python3 reverse shell one liner:
 
