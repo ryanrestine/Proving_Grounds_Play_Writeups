@@ -10,6 +10,7 @@ A place for PG Play CTF writeups
 - DriftingBlues6
 - Election1
 - EvilBox-One
+- FunboxEasyEnum
 - FunBoxRookie
 - Gaara
 - InfosecPrep
