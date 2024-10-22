@@ -9,7 +9,7 @@
 
 ### Enumeration
 
-I'll begin enumerating this box by scanning all TCP ports with Nmap and use the --min-rate 10000 flag to speed things up. I'll also use the -sC and -sV to use basic Nmap scripts and to enumerate versions:
+I'll begin enumerating this box by scanning all TCP ports with Nmap and use the `--min-rate 10000` flag to speed things up. I'll also use the `-sC` and `-sV` to use basic Nmap scripts and to enumerate versions:
 
 ```
 ┌──(ryan㉿kali)-[~/PG/Play/FunboxEasyEnum]
@@ -36,7 +36,7 @@ Nmap done: 1 IP address (1 host up) scanned in 16.91 seconds
 
 SCanning for idrectories we find `/mini.php`
 
-pg_fbee_dirs.png
+![pg_fbee_dirs.png](../assets/funboxeasyenum_assets/pg_fbee_dirs.png)
 
 We can upload a simple webshell:
 
