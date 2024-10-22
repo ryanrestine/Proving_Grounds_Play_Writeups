@@ -73,13 +73,13 @@ hostname
 funbox7
 ```
 
-We can then grab the loacl.txt flag in `/var/www`
+We can then grab the local.txt flag in `/var/www`
 
 ![pg_fbee_local.png](../assets/funboxeasyenum_assets/pg_fbee_local.png)
 
 ### Privilege Escalation
 
-Loading linpeas we find tha password hash for user oracle, which we can crack with John:
+Loading linpeas we find the password hash for user oracle, which we can crack with John:
 
 ```
 ╔══════════╣ Users with console
@@ -109,7 +109,7 @@ Proceeding with wordlist:/usr/share/john/password.lst
 hiphop           (?)  
 ```
 
-Yet nothing came of being user oracle.
+Yet, nothing came of being user oracle.
 
 Going back to my original linpeas output we find a DB cred:
 
