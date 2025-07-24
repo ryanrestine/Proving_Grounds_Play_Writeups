@@ -45,7 +45,7 @@ Kicking off some scanning against the site using wpscan, we find some usernames:
 └─$ wpscan --url 192.168.167.239 --enumerate vp,u,vt,tt
 ```
 
-pgplay_coldboxeasy_usernames.png
+![pgplay_coldboxeasy_usernames.png](../assets/coldboxeasy_assets/pgplay_coldboxeasy_usernames.png)
 
 
 Directory fuzzing reveals: http://192.168.167.239/hidden/ which contains an interesting message:
@@ -70,7 +70,7 @@ From here we find we can bruteforce user c0ldd's password using wpscan:
 
 Let's use this to login:
 
-pgplay_coldboxeasy_in.png
+![pgplay_coldboxeasy_in.png](../assets/coldboxeasy_assets/pgplay_coldboxeasy_in.png)
 
 We can now grab a copy of PentestMonkey's famous php-reverse-shell.php and update the variables for our attacking box:
 
@@ -91,7 +91,7 @@ $debug = 0;
 
 Let's then copy the script and go to Appearance > Themes > Editor, and overwrite the 404.php code.
 
-pgplay_coldboxeasy_themes.png
+![pgplay_coldboxeasy_themes.png](../assets/coldboxeasy_assets/pgplay_coldboxeasy_themes.png)
 
 From here we can set up a nc listener and navigate to http://192.168.167.239/wp-content/themes/twentyfifteen/404.php to trigger our shell.
 
@@ -115,13 +115,13 @@ www-data@ColddBox-Easy:/$
 
 We can now grab the local.txt flag:
 
-pgplay_coldboxeasy_user.png
+![pgplay_coldboxeasy_user.png](../assets/coldboxeasy_assets/pgplay_coldboxeasy_user.png)
 
 ### Privilege Escalation
 
 Looking at the wp-config.php file in `/var/www/html` we find some credentials:
 
-pgplay_coldboxeasy_creds.png
+![pgplay_coldboxeasy_creds.png](../assets/coldboxeasy_assets/pgplay_coldboxeasy_creds.png)
 
 We can use these to `su c0ldd`:
 
@@ -157,7 +157,7 @@ sudo /usr/bin/vim -c ':!/bin/sh'
 
 We can now grab the root flag:
 
-pgplay_coldboxeasy_root.png
+![pgplay_coldboxeasy_root.png](../assets/coldboxeasy_assets/pgplay_coldboxeasy_root.png)
 
 Thanks for following along!
 
