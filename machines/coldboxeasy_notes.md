@@ -36,7 +36,7 @@ Nmap done: 1 IP address (1 host up) scanned in 15.82 seconds
 
 Looking at the page on port 80 we find it is running WordPress.
 
-![pgplay_coldboxeasy_site.png](../assets/pg_play_assets/prplay_coldboxeasy_site.png)
+![pgplay_coldboxeasy_site.png](../assets/coldboxeasy_assets/pgplay_coldboxeasy_site.png)
 
 Kicking off some scanning against the site using wpscan, we find some usernames:
 
